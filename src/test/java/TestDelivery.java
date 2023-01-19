@@ -21,17 +21,17 @@ import static com.codeborne.selenide.Selenide.*;
 
     @Test
     void shouldSuccessfulTwoMeetings() {
-        DataGenerator.RegistrationInfo userInfo = DataGenerator.RegistrationInfo.generateInfo("ru");
-        int daysAddToFirstMeeting = 4;
-        String firstMeetingDate = DataGenerator.generateDate(daysAddToFirstMeeting);
-        int daysAddToSecMeeting = 10;
-        String secMeetingDate = DataGenerator.generateDate(daysAddToSecMeeting);
+        var userInfo = DataGenerator.RegistrationInfo.generateInfo("ru");
+        var daysAddToFirstMeeting = 4;
+        var firstMeetingDate = DataGenerator.generateDate(daysAddToFirstMeeting);
+        var daysAddToSecMeeting = 10;
+        var secMeetingDate = DataGenerator.generateDate(daysAddToSecMeeting);
         $("[placeholder='Город']").setValue(userInfo.getCity());
         $("[placeholder='Дата встречи']").sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
         $("[placeholder='Дата встречи']").setValue(firstMeetingDate);
-        $("[data-tes-id='name'] input").setValue(userInfo.getName());
+        $("[name='name']").setValue(userInfo.getName());
         $("[name='phone']").setValue(userInfo.getPhone());
-        $(".checkbox__control").click();
+        $(".checkbox__box").click();
         $$("[role='button']").find(exactText("Запланировать")).click();
         $("[data-test-id='success-notification']  .notification__title")
                 .shouldBe(visible, Duration.ofSeconds(10)).shouldHave(exactText("Успешно!"));

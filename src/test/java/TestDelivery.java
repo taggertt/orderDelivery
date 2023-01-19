@@ -1,4 +1,3 @@
-import lombok.var;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
@@ -19,11 +18,11 @@ import static com.codeborne.selenide.Selenide.*;
 
     @Test
     void shouldSuccessfulTwoMeetings() {
-        var userInfo = DataGenerator.RegistrationInfo.generateInfo("ru");
-        var daysAddToFirstMeeting = 4;
-        var firstMeetingDate = DataGenerator.generateDate(daysAddToFirstMeeting);
-        var daysAddToSecMeeting = 10;
-        var secMeetingDate = DataGenerator.generateDate(daysAddToSecMeeting);
+        DataGenerator.RegistrationInfo userInfo = DataGenerator.RegistrationInfo.generateInfo("ru");
+        int daysAddToFirstMeeting = 4;
+        String firstMeetingDate = DataGenerator.generateDate(daysAddToFirstMeeting);
+        int daysAddToSecMeeting = 10;
+        String secMeetingDate = DataGenerator.generateDate(daysAddToSecMeeting);
         $("[placeholder='Город']").setValue(userInfo.getCity());
         $("[placeholder='Дата встречи']").sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
         $("[placeholder='Дата встречи']").setValue(firstMeetingDate);

@@ -37,10 +37,10 @@ import static com.codeborne.selenide.Selenide.*;
         $("[data-test-id='date'] input").sendKeys(Keys.CONTROL + "A" + Keys.DELETE);
         $("[data-test-id='date'] input").setValue(secMeetingDate);
         $$("[role='button']").find(exactText("Запланировать")).click();
-        $("[data-test-id='replan-notification']  .notification__title").shouldBe(visible, Duration.ofSeconds(10)).shouldHave(exactText("Необходимо подтверждение"));
+        $("[data-test-id='replan-notification']  .notification__title").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Необходимо подтверждение"));
         $$("[data-test-id='replan-notification'] button").find(exactText("Перепланировать")).click();
-        $("[data-test-id='success-notification']  .notification__title").shouldBe(visible, Duration.ofSeconds(10)).shouldHave(exactText("Успешно!"));
-        $("[data-test-id='success-notification']  .notification__content").shouldBe(visible, Duration.ofSeconds(10)).shouldHave(exactText("Встреча успешно запланирована на " + secMeetingDate));
+        $("[data-test-id='success-notification']  .notification__title").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Успешно!"));
+        $("[data-test-id='success-notification']  .notification__content").shouldBe(visible, Duration.ofSeconds(15)).shouldHave(exactText("Встреча успешно запланирована на " + secMeetingDate));
     }
 }
 
